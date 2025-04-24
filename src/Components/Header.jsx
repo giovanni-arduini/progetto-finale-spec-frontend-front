@@ -10,7 +10,7 @@ export default function Header() {
   };
 
   return (
-    <header className="flex justify-between items-center">
+    <header className="flex justify-between items-center px-3">
       <FavoritesTab />
       <div>
         <NavLink to={"/"} className={"text-l font-semibold"}>

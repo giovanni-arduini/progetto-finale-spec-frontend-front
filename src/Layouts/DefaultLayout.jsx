@@ -4,9 +4,9 @@ import Footer from "../Components/Footer";
 
 export default function DefaultLayout() {
   return (
-    <div>
+    <div className="bg-zinc-200">
       <Header />
-      <main>
+      <main className="w-[1200] max-w-full m-auto p-5">
         <Outlet />
       </main>
       <Footer />

@@ -9,9 +9,7 @@ function useGuitars() {
     setProducts(data);
   };
 
-  useEffect(() => {
-    fetchProducts;
-  }, []);
+  useEffect(() => fetchProducts, []);
 
   const getProduct = async (id) => {
     const response = await fetch(`http://localhost:3001/guitars/${id}`);
@@ -22,4 +20,4 @@ function useGuitars() {
   return { products, setProducts, getProduct };
 }
 
-export default { products };
+export default useGuitars;

@@ -20,7 +20,7 @@ function ProductsList() {
       .sort((a, b) => {
         return a.title.localeCompare(b.title) * sortOrder;
       });
-  }, [search, products, selectedCategory]);
+  }, [search, products, selectedCategory, sortOrder]);
 
   console.log(products);
 
@@ -49,7 +49,13 @@ function ProductsList() {
           </select>
         </div>
 
-        <button>Sort by name</button>
+        <button
+          onClick={() => {
+            setSortOrder(sortOrder * -1);
+          }}
+        >
+          Sort by name
+        </button>
         <div>
           {filteredList.map((product) => (
             <div key={product.id}>{product.title}</div>

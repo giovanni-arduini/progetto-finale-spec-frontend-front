@@ -5,19 +5,21 @@ function ProductsList() {
   const { products } = useGlobalContext();
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [sortOrder, setSortOrder] = useState(1);
 
   const filteredList = useMemo(() => {
-    return [...products].filter((p) => {
-      const query = p.title
-        .toLowerCase()
-        .includes(search.toLocaleLowerCase().trim());
-      const category =
-        selectedCategory === "" || p.category === selectedCategory;
-      return query && category;
-    });
-    //   .sort((a, b) => {
-    //     return a.title.localeCompare(b.title) * sortOrder;
-    //   });
+    return [...products]
+      .filter((p) => {
+        const query = p.title
+          .toLowerCase()
+          .includes(search.toLocaleLowerCase().trim());
+        const category =
+          selectedCategory === "" || p.category === selectedCategory;
+        return query && category;
+      })
+      .sort((a, b) => {
+        return a.title.localeCompare(b.title) * sortOrder;
+      });
   }, [search, products, selectedCategory]);
 
   console.log(products);

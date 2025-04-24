@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+import useGuitars from "../Hooks/useGuitars";
 
 const GlobalContext = createContext();
 
@@ -7,5 +8,11 @@ export function useGlobalContext() {
 }
 
 export function GlobalProvider({ children }) {
-  return <GlobalContext.Provider>{children}</GlobalContext.Provider>;
+  const { products, setProducts, getProduct } = useGuitars();
+
+  return (
+    <GlobalContext.Provider value={{ products, setProducts, getProduct }}>
+      {children}
+    </GlobalContext.Provider>
+  );
 }

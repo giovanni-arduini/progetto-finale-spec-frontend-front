@@ -50,14 +50,18 @@ export default function ProductsDetail() {
 
   return (
     <>
-      <h1>{title}</h1>
+      <h1 className="text-3xl font-bold">{title}</h1>
       <p>{rating}</p>
-      <div>
+      <div className="flex justify-between bg-white">
         <img src={image} alt="" />
-        <div>
+        <div className="flex flex-col items-end">
           <h4>{category}</h4>
-          {<p>{available ? "Available" : "Currently out of stock"}</p>}
           <p>Price: {price}€</p>
+          {
+            <p className={available ? "text-green-600" : "text-red-600"}>
+              {available ? "Available" : "Currently out of stock"}
+            </p>
+          }
         </div>
       </div>
     </>

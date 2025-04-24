@@ -6,6 +6,17 @@ export default function ProductsList() {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
 
+  const filteredList = () => {
+    return [...products].filter((p) => {
+      const query = p.title
+        .toLowerCase()
+        .includes(search.toLocaleLowerCase().trim());
+      const category =
+        selectedCategory === "" || p.category === selectedCategory;
+      return query && category;
+    });
+  };
+
   return (
     <>
       <section>
@@ -32,7 +43,11 @@ export default function ProductsList() {
         </div>
 
         <button>Sort by name</button>
-        <div></div>
+        <div>
+          {filteredList.map((product) => {
+            <div key={product.id}>{product.title}</div>;
+          })}
+        </div>
       </section>
     </>
   );

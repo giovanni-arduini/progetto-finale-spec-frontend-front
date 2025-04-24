@@ -14,7 +14,6 @@ function ProductCard({ product }) {
     <div>
       <div onClick={() => toDetail(id)}>
         <h2>{title}</h2>
-        <p>Price</p>
         <p>{category}</p>
       </div>
       <div>

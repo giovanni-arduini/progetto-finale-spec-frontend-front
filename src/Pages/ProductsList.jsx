@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { useGlobalContext } from "../Contexts/GlobalContext";
+import ProductCard from "../Components/ProductCard";
 
 function ProductsList() {
   const { products } = useGlobalContext();
@@ -58,7 +59,7 @@ function ProductsList() {
         </button>
         <div>
           {filteredList.map((product) => (
-            <div key={product.id}>{product.title}</div>
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>

@@ -4,6 +4,10 @@ function FavoritesTab() {
   const { favorites, setFavorites, showFavorites, setShowFavorites } =
     useGlobalContext();
 
+  const removeFromFavorites = (item) => {
+    setFavorites((curr) => curr.filter((p) => p.id !== item.id));
+  };
+
   return (
     <div
       className={`z-1 fixed top-0 right-0 bg-gray-700 shadow-2xl w-96 h-full grid grid-rows-[60px_1fr] transition duration-300 ease-in-out ${
@@ -27,11 +31,14 @@ function FavoritesTab() {
             {favorites.map((item, i) => (
               <li className="bg-slate-500 p-3" key={i}>
                 {item.title}
+                <button
+                  className="cursor-pointer py-1 px-3  mx-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10  dark:focus:ring-gray-700 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-800"
+                  onClick={() => removeFromFavorites(item)}
+                >
+                  Remove from favorites
+                </button>
               </li>
             ))}
-            <button className="cursor-pointer py-1 px-3  mx-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10  dark:focus:ring-gray-700 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-800">
-              Remove from favorites
-            </button>
           </ul>
         </div>
       </div>

@@ -26,8 +26,8 @@ export default function Header() {
           onClick={() => handleShowFavorites()}
         >
           <img className="w-6" src="../public/images/save.png" alt="" />
-          <span className="absolute top-2/3 left-1/2 bg-red-500 text-white text-sm w-5 h-5 rounded-full flex justify-center items-center">
-            {favorites.reduce((acc, curr) => acc + curr.quantity, 0)}
+          <span className="absolute top-3/5 left-3/5 bg-black text-white text-sm w-3 h-3 rounded-full flex justify-center items-center">
+            {favorites.length}
           </span>
         </div>
       </div>

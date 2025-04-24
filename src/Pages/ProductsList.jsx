@@ -4,7 +4,7 @@ import { useGlobalContext } from "../Contexts/GlobalContext";
 export default function ProductsList() {
   const { products } = useGlobalContext;
   const [search, setSearch] = useState("");
-  cosnt[(selectedCategory, setSelectedCategory)] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   return (
     <>

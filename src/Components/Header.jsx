@@ -13,7 +13,7 @@ export default function Header() {
     <header className="flex justify-between items-center px-3">
       <FavoritesTab />
       <div>
-        <NavLink to={"/"} className={"text-l font-semibold"}>
+        <NavLink to={"/"} className={"text-l font-semibold mr-5"}>
           Home
         </NavLink>
         <button>Compare products</button>

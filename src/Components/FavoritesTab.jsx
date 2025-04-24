@@ -13,7 +13,12 @@ function FavoritesTab() {
       }`}
     >
       <div className="grid gap-5 p-4">
-        <button className="cursor-pointer bg-black text-white">Close</button>
+        <button
+          className="cursor-pointer bg-black text-white"
+          onClick={() => setShowFavorites(false)}
+        >
+          Close
+        </button>
       </div>
       <div>
         <h2 className="p-5 text-white text-2xl">Favorites</h2>

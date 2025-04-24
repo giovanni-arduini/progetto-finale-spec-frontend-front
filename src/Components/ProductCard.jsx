@@ -3,6 +3,7 @@ import { useGlobalContext } from "../Contexts/GlobalContext";
 
 function ProductCard({ product }) {
   const { id, title, category } = product;
+  const { favorites, setFavorites, products } = useGlobalContext();
 
   const navigate = useNavigate();
 
@@ -10,14 +11,28 @@ function ProductCard({ product }) {
     navigate(`/guitars/${id}`);
   };
 
+  const handleFavorite = (id) => {
+    const newFavorite = products.find((p) => p.id === id);
+    if (newFavorite && !favorites.some((fav) => fav.id === id)) {
+      setFavorites((prevFavorites) => [...prevFavorites, newFavorite]);
+    } else {
+      setFavorites((prevFavorites) => prevFavorites.filter((p) => p.id !== id));
+    }
+  };
+
   return (
-    <div>
-      <div onClick={() => toDetail(id)}>
-        <h2>{title}</h2>
+    <div className="bg-white rounded-xl p-5 box-shadow-sm flex flex-col">
+      <div className="cursor-pointer mb-2 grow" onClick={() => toDetail(id)}>
+        <h2 className="text-lg py-3 text-center font-md">{title}</h2>
         <p>{category}</p>
       </div>
-      <div>
-        <button>♥︎</button>
+      <div className="flex justify-around ">
+        <button
+          className="cursor-pointer text-red-700"
+          onClick={() => handleFavorite(id)}
+        >
+          {favorites.some((fav) => fav.id === id) ? "♥︎" : "♡"}
+        </button>
         <button>⇄</button>
       </div>
     </div>

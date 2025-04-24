@@ -13,7 +13,7 @@ function useGuitars() {
     fetchProducts;
   }, []);
 
-  const getProduct = async () => {
+  const getProduct = async (id) => {
     const response = await fetch(`http://localhost:3001/guitars/${id}`);
     const data = await response.json();
     return data;

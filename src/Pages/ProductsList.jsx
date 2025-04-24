@@ -4,6 +4,7 @@ import { useGlobalContext } from "../Contexts/GlobalContext";
 export default function ProductsList() {
   const { products } = useGlobalContext;
   const [search, setSearch] = useState("");
+  cosnt[(selectedCategory, setSelectedCategory)] = useState("");
 
   return (
     <>
@@ -21,7 +22,13 @@ export default function ProductsList() {
             name="category"
             id="category"
             onChange={(e) => setSelectCategory(e.target.value)}
-          ></select>
+          >
+            <option value="">All categories</option>
+            <option value="Acoustic">Acoustic</option>
+            <option value="Electric">Electric</option>
+            <option value="Acoustic-Electric">Acoustic-Electric</option>
+            <option value="Semi-Hollow Electric">Semi-Hollow Electric</option>
+          </select>
         </div>
 
         <button>Sort by name</button>

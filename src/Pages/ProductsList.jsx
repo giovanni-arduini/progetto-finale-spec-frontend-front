@@ -28,16 +28,18 @@ function ProductsList() {
   return (
     <>
       <section>
-        <h1>Guitars</h1>
+        <h1 className="text-3xl my-5">Guitars</h1>
 
-        <div>
+        <div className="mb-3">
           <input
+            className="bg-white rounded-lg mr-3 p-1 px-2"
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
 
           <select
+            className="bg-white rounded-lg mr-3 p-1"
             name="category"
             id="category"
             onChange={(e) => setSelectedCategory(e.target.value)}
@@ -51,13 +53,14 @@ function ProductsList() {
         </div>
 
         <button
+          className="bg-white rounded-lg p-1 mb-4 px-2"
           onClick={() => {
             setSortOrder(sortOrder * -1);
           }}
         >
           Sort by name
         </button>
-        <div>
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
           {filteredList.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

@@ -10,15 +10,22 @@ export default function Header() {
   };
 
   return (
-    <header>
+    <header className="flex justify-between items-center">
       <FavoritesTab />
       <div>
-        <NavLink to={"/"}>Home</NavLink>
+        <NavLink to={"/"} className={"text-l font-semibold"}>
+          Home
+        </NavLink>
         <button>Compare products</button>
       </div>
 
       <div>
-        <div onClick={() => handleShowFavorites()}>Favorites</div>
+        <div
+          className="w-10 h-10 bg-gray-200 rounded-full flex justify-center items-center relative"
+          onClick={() => handleShowFavorites()}
+        >
+          Favorites
+        </div>
       </div>
     </header>
   );

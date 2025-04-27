@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect } from "react";
 import { useGlobalContext } from "./GlobalContext";
+import useCompare from "../Hooks/useCompare";
 
 const CompareContext = createContext();
 

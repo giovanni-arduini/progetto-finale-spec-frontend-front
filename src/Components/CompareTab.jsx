@@ -1,7 +1,6 @@
 import CompareCard from "./Comparecard";
 import SideTab from "./SideTab";
 import { useCompareContext } from "../Contexts/CompareContext";
-import { use } from "react";
 
 export default function CompareTab() {
   const {
@@ -17,6 +16,7 @@ export default function CompareTab() {
   return (
     <>
       <SideTab
+        position={"bottom"}
         title={"Compare products"}
         content={
           <>

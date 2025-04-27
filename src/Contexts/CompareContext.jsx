@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect } from "react";
 import { useGlobalContext } from "./GlobalContext";
 
 const CompareContext = createContext();
@@ -31,7 +31,21 @@ export function CompareProvider({ children }) {
     }
   };
 
+  function closeCompare() {
+    setShowCompare(false);
+  }
+
+  function toggleCompare() {
+    showCompare ? setShowCompare(false) : setShowCompare(true);
+  }
+
+  useEffect(() => {
+    itemsToCompare.length < 1 ? setShowCompare(false) : setShowCompare(true);
+  }, [itemsToCompare]);
+
   return (
-    <CompareContext.Provider value={{}}>{children}</CompareContext.Provider>
+    <CompareContext.Provider value={{ compareItem }}>
+      {children}
+    </CompareContext.Provider>
   );
 }

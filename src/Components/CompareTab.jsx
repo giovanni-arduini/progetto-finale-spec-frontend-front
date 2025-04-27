@@ -23,8 +23,8 @@ export default function CompareTab() {
             <CompareCard />
           </>
         }
-        show={true}
-        onClose={() => {}}
+        show={showCompare}
+        onClose={closeCompare}
         onRemove={() => {}}
       />
     </>

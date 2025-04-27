@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { useGlobalContext } from "../Contexts/GlobalContext";
+import { useCompareContext } from "../Contexts/CompareContext";
 import FavoritesTab from "./FavoritesTab";
 
 export default function Header() {
-  const { favorites, setFavorites, showFavorites, setShowFavorites } =
-    useGlobalContext();
+  const { favorites, setShowFavorites } = useGlobalContext();
+
+  const { toggleCompare } = useCompareContext();
 
   const handleShowFavorites = () => {
     setShowFavorites((prev) => !prev);
@@ -17,7 +19,7 @@ export default function Header() {
         <NavLink to={"/"} className={"text-l font-semibold mr-5"}>
           Home
         </NavLink>
-        <button>Compare products</button>
+        <button onClick={() => toggleCompare()}>Compare products</button>
       </div>
 
       <div>

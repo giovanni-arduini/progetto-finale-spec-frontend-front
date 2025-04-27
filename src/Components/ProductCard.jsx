@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../Contexts/GlobalContext";
+import { useCompareContext } from "../Contexts/CompareContext";
 
 function ProductCard({ product }) {
   const { id, title, category } = product;
   const { favorites, setFavorites, products } = useGlobalContext();
+  const { compareItem } = useCompareContext();
 
   const navigate = useNavigate();
 
@@ -34,7 +36,9 @@ function ProductCard({ product }) {
         >
           {favorites.some((fav) => fav.id === id) ? "♥︎" : "♡"}
         </button>
-        <button>⇄</button>
+        <button className="cursor-pointer" onClick={() => compareItem(id)}>
+          ⇄
+        </button>
       </div>
     </div>
   );

@@ -1,9 +1,14 @@
 import { useState, useMemo } from "react";
 import { useGlobalContext } from "../Contexts/GlobalContext";
+import { useCompareContext } from "../Contexts/CompareContext";
 import ProductCard from "../Components/ProductCard";
 
 function ProductsList() {
   const { products } = useGlobalContext();
+  const { showCompare } = useCompareContext();
+
+  console.log(showCompare);
+
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortOrder, setSortOrder] = useState(1);
@@ -23,13 +28,15 @@ function ProductsList() {
       });
   }, [search, products, selectedCategory, sortOrder]);
 
-  console.log(products);
-
   return (
     <>
-      <section>
+      <section
+        className={`h-full transition-all duration-300 ${
+          showCompare ? "pb-100" : "pb-10"
+        }`}
+      >
+        {" "}
         <h1 className="text-3xl my-5">Guitars</h1>
-
         <div className="mb-3">
           <input
             className="bg-white rounded-lg mr-3 p-1 px-2"
@@ -51,7 +58,6 @@ function ProductsList() {
             <option value="Semi-Hollow Electric">Semi-Hollow Electric</option>
           </select>
         </div>
-
         <button
           className="bg-white rounded-lg p-1 mb-4 px-2"
           onClick={() => {

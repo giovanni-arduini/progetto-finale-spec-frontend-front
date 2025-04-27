@@ -29,6 +29,8 @@ export function CompareProvider({ children }) {
       setItemsToCompare((prevItems) =>
         prevItems.filter((item) => item.id !== id)
       );
+    } else {
+      setItemsToCompare((prevItems) => prevItems.filter((p) => p.id !== id));
     }
   };
 

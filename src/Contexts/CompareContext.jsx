@@ -19,17 +19,15 @@ export function CompareProvider({ children }) {
   }
 
   const compareItem = async (id) => {
-    if (
-      !itemsToCompare.some((item) => item.id === id) &&
-      itemsToCompare.length < 2
-    ) {
-      const item = await getItem(id);
-      setItemsToCompare((prevItems) => [...prevItems, item]);
-    } else if (itemsToCompare.some((item) => item.id === id)) {
-      setItemsToCompare((prevItems) =>
-        prevItems.filter((item) => item.id !== id)
-      );
-    } else {
+    if (!itemsToCompare.some((item) => item.id === id))
+      if (itemsToCompare.length < 2) {
+        const item = await getItem(id);
+        setItemsToCompare((prevItems) => [...prevItems, item]);
+      } else {
+        const item = await getItem(id);
+        setItemsToCompare((prevItems) => [prevItems[1], item]);
+      }
+    else {
       setItemsToCompare((prevItems) => prevItems.filter((p) => p.id !== id));
     }
   };

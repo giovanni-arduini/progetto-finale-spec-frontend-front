@@ -1,11 +1,4 @@
-export default function SideTab({
-  title,
-  content,
-  onClose,
-  show,
-  position,
-  // onRemove,
-}) {
+export default function SideTab({ title, content, onClose, show, position }) {
   return (
     <div
       className={`${
@@ -31,7 +24,13 @@ export default function SideTab({
       <div>
         <h2 className="p-5 text-white text-2xl">{title}</h2>
         <div className="p-5">
-          <ul className="flex flex-col gap-10 justify-between  text-white p-2 border-b-2 border-slate-700 round">
+          <ul
+            className={`${
+              position !== "bottom"
+                ? "flex flex-col gap-10 justify-between  text-white p-2 border-b-2 border-slate-700 round"
+                : "flex justify-center items-center grid grid-cols-2 gap-5"
+            }`}
+          >
             {content}
           </ul>
         </div>

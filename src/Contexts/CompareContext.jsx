@@ -44,7 +44,15 @@ export function CompareProvider({ children }) {
   }, [itemsToCompare]);
 
   return (
-    <CompareContext.Provider value={{ compareItem }}>
+    <CompareContext.Provider
+      value={{
+        showCompare,
+        itemsToCompare,
+        compareItem,
+        closeCompare,
+        toggleCompare,
+      }}
+    >
       {children}
     </CompareContext.Provider>
   );

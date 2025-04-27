@@ -4,13 +4,21 @@ export default function SideTab({
   onClose,
   show,
   position,
-  onRemove,
+  // onRemove,
 }) {
   return (
     <div
-      className={`z-1 fixed top-0 right-0 bg-gray-700 shadow-2xl w-96 h-full grid grid-rows-[60px_1fr] transition duration-300 ease-in-out ${
-        show ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
-      }`}
+      className={`${
+        position !== "bottom"
+          ? `z-1 fixed top-0 right-0 bg-gray-700 shadow-2xl w-96 h-full grid grid-rows-[60px_1fr] transition duration-300 ease-in-out"
+          ${show ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"}`
+          : ` overflow-auto fixed bottom-0 left-0 right-0 bg-gray-700 shadow-2xl h-100 w-full transition-transform transition-opacity duration-300 ease-in-out"
+      ${
+        show
+          ? "translate-y-0 opacity-100"
+          : "translate-y-[calc(100%-0px)] opacity-50"
+      }`
+      } `}
     >
       <div className="grid gap-5 p-4">
         <button

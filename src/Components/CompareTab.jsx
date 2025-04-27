@@ -12,15 +12,17 @@ export default function CompareTab() {
     toggleCompare,
   } = useCompareContext();
 
+  console.log(itemsToCompare);
+
   return (
     <>
       <SideTab
         title={"Compare products"}
         content={
           <>
-            {" "}
-            <CompareCard />
-            <CompareCard />
+            {itemsToCompare.map((item) => (
+              <CompareCard key={item.id} item={item} />
+            ))}
           </>
         }
         show={showCompare}

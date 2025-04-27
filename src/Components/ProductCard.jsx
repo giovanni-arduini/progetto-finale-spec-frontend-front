@@ -13,6 +13,7 @@ function ProductCard({ product }) {
 
   const handleFavorite = (id) => {
     const newFavorite = products.find((p) => p.id === id);
+
     if (newFavorite && !favorites.some((fav) => fav.id === id)) {
       setFavorites((prevFavorites) => [...prevFavorites, newFavorite]);
     } else {

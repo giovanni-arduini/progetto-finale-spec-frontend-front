@@ -7,7 +7,7 @@ export default function Header() {
     useGlobalContext();
 
   const handleShowFavorites = () => {
-    !showFavorites ? setShowFavorites(true) : setShowFavorites(false);
+    setShowFavorites((prev) => !prev);
   };
 
   return (

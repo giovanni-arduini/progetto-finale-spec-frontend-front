@@ -60,7 +60,7 @@ export default function ProductsDetail() {
           return "☆";
         })}
       </p>
-      <div className="flex grid grid-cols-5 bg-white">
+      <div className="flex grid grid-cols-5 bg-white rounded-lg">
         <div className="flex justify-center p-4 col-span-3">
           <img className="max-h-100  object-contain" src={image} alt="" />
         </div>
@@ -74,17 +74,17 @@ export default function ProductsDetail() {
           }
         </div>
       </div>
-      <div>
+      <div className="max-w-200 mt-4 m-auto">
         {itemSpecs.map(([key, value], index) => (
-          <span
-            className="odd:bg-white odd:dark:bg-gray-800 even:bg-gray-50 even:dark:bg-gray-700 border-b dark:border-gray-600 border-gray-200"
+          <p
+            className="odd:bg-white  even:bg-gray-50  border-b  border-gray-200 flex justify-between"
             key={index}
           >
-            <p className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <span className=" px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
               {sanitizeSpec(key)}:
-            </p>
-            <p className="px-6 py-4">{value}</p>
-          </span>
+            </span>
+            <span className="px-6 py-4">{value}</span>
+          </p>
         ))}
       </div>
     </>

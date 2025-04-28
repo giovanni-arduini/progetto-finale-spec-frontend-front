@@ -9,3 +9,5 @@ function useFavorites() {
     setShowFavorites,
   };
 }
+
+export default useFavorites;

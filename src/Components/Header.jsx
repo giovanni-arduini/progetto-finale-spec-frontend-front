@@ -23,8 +23,8 @@ export default function Header() {
           className="w-10 h-10 bg-gray-200 rounded-full flex justify-center items-center relative"
           onClick={() => toggleFavorites()}
         >
-          <img className="w-6" src="/images/save.png" alt="Favorites list" />
-          <span className="absolute top-3/5 left-3/5 bg-black text-white text-sm w-3 h-3 rounded-full flex justify-center items-center">
+          <img className="w-7" src="/images/save.png" alt="Favorites list" />
+          <span className="absolute p-2 top-1/2 left-1/2 bg-slate-500 text-white text-sm w-3 h-3 rounded-full flex justify-center items-center">
             {favorites.length}
           </span>
         </div>

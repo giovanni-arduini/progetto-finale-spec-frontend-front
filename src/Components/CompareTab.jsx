@@ -5,8 +5,6 @@ import { useCompareContext } from "../Contexts/CompareContext";
 export default function CompareTab() {
   const { showCompare, itemsToCompare, closeCompare } = useCompareContext();
 
-  console.log(itemsToCompare);
-
   return (
     <>
       <SideTab
@@ -21,7 +19,6 @@ export default function CompareTab() {
         }
         show={showCompare}
         onClose={closeCompare}
-        onRemove={() => {}}
       />
     </>
   );

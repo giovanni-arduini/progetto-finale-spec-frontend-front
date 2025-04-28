@@ -19,6 +19,11 @@ export function FavoritesProvider({ children }) {
     setShowFavorites((prev) => !prev);
   };
 
+  // used in FavoritesTab to remove item
+  const removeFromFavorites = (item) => {
+    setFavorites((curr) => curr.filter((p) => p.id !== item.id));
+  };
+
   // used in ProductCard to add and remove favorite
   const handleFavorite = (id) => {
     const newFavorite = products.find((p) => p.id === id);
@@ -38,6 +43,7 @@ export function FavoritesProvider({ children }) {
         setShowFavorites,
         handleFavorite,
         toggleFavorites,
+        removeFromFavorites,
       }}
     >
       {children}

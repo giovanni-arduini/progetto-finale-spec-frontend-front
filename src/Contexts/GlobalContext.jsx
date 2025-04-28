@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 import useGuitars from "../Hooks/useGuitars";
 
 const GlobalContext = createContext();
@@ -9,9 +9,6 @@ export function useGlobalContext() {
 
 export function GlobalProvider({ children }) {
   const { products, setProducts, getProduct } = useGuitars();
-
-  const [favorites, setFavorites] = useState([]);
-  const [showFavorites, setShowFavorites] = useState(false);
 
   return (
     <GlobalContext.Provider

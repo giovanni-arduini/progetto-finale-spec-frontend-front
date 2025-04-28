@@ -2,12 +2,13 @@ import { useFavoritesContext } from "../Contexts/FavoritesContext";
 import SideTab from "./SideTab";
 
 function FavoritesTab() {
-  const { favorites, setFavorites, showFavorites, setShowFavorites } =
-    useFavoritesContext();
-
-  const removeFromFavorites = (item) => {
-    setFavorites((curr) => curr.filter((p) => p.id !== item.id));
-  };
+  const {
+    favorites,
+    setFavorites,
+    showFavorites,
+    setShowFavorites,
+    removeFromFavorites,
+  } = useFavoritesContext();
 
   return (
     <SideTab

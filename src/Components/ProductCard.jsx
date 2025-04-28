@@ -31,8 +31,10 @@ function ProductCard({ product }) {
         </button>
         <button
           className={`cursor-pointer rounded-md p-2 ${
-            itemsToCompare.some((i) => i.id === id) ? "bg-slate-300" : ""
-          }`}
+            itemsToCompare.some((i) => i.id === id)
+              ? "bg-slate-300"
+              : "bg-gray-100"
+          } border border-gray-300 `}
           onClick={() => compareItem(id)}
         >
           ⇄

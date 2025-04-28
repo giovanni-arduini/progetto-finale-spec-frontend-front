@@ -1,29 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../Contexts/GlobalContext";
 import { useFavoritesContext } from "../Contexts/FavoritesContext";
 import { useCompareContext } from "../Contexts/CompareContext";
 
 function ProductCard({ product }) {
   const { id, title, category } = product;
 
-  const { products } = useGlobalContext();
-  const { favorites, setFavorites } = useFavoritesContext();
+  const { favorites, handleFavorite } = useFavoritesContext();
   const { compareItem } = useCompareContext();
 
   const navigate = useNavigate();
 
   const toDetail = (id) => {
     navigate(`/guitars/${id}`);
-  };
-
-  const handleFavorite = (id) => {
-    const newFavorite = products.find((p) => p.id === id);
-
-    if (newFavorite && !favorites.some((fav) => fav.id === id)) {
-      setFavorites((prevFavorites) => [...prevFavorites, newFavorite]);
-    } else {
-      setFavorites((prevFavorites) => prevFavorites.filter((p) => p.id !== id));
-    }
   };
 
   return (

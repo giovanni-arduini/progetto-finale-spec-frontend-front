@@ -6,13 +6,15 @@ function ProductCard({ product }) {
   const { id, title, category } = product;
 
   const { favorites, handleFavorite } = useFavoritesContext();
-  const { compareItem } = useCompareContext();
+  const { compareItem, itemsToCompare } = useCompareContext();
 
   const navigate = useNavigate();
 
   const toDetail = (id) => {
     navigate(`/guitars/${id}`);
   };
+
+  console.log(itemsToCompare);
 
   return (
     <div className="bg-white rounded-xl p-5 box-shadow-sm flex flex-col">
@@ -27,7 +29,12 @@ function ProductCard({ product }) {
         >
           {favorites.some((fav) => fav.id === id) ? "♥︎" : "♡"}
         </button>
-        <button className="cursor-pointer" onClick={() => compareItem(id)}>
+        <button
+          className={`cursor-pointer rounded-md p-2 ${
+            itemsToCompare.some((i) => i.id === id) ? "bg-slate-300" : ""
+          }`}
+          onClick={() => compareItem(id)}
+        >
           ⇄
         </button>
       </div>

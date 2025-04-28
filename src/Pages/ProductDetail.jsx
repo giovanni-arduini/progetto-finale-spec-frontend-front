@@ -5,7 +5,7 @@ import { useFavoritesContext } from "../Contexts/FavoritesContext";
 
 export default function ProductsDetail() {
   const { getProduct } = useGlobalContext();
-  const { handleFavorite } = useFavoritesContext();
+  const { handleFavorite, favorites } = useFavoritesContext();
   const { id } = useParams();
   const [guitar, setGuitar] = useState();
 
@@ -83,12 +83,17 @@ export default function ProductsDetail() {
               {available ? "Available" : "Currently out of stock"}
             </p>
           }
-          <div className="row-span-1">
+          <div className="flex flex-col row-span-1 gap-2">
             <button
-              className="cursor-pointer"
+              className="bg-gray-100 border border-gray-300 rounded-md cursor-pointer"
               onClick={() => handleFavorite(guitar.id)}
             >
-              Add to fav
+              {`${
+                favorites.some((fav) => fav.id === guitar.id)
+                  ? "Remove from "
+                  : "Add to "
+              }`}
+              <span className="text-red-600">♥︎</span>
             </button>
             <h4>{category} Guitar</h4>
           </div>

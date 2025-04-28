@@ -1,15 +1,9 @@
-import CompareCard from "./Comparecard";
+import CompareCard from "./CompareCard";
 import SideTab from "./SideTab";
 import { useCompareContext } from "../Contexts/CompareContext";
 
 export default function CompareTab() {
-  const {
-    showCompare,
-    itemsToCompare,
-    compareItem,
-    closeCompare,
-    toggleCompare,
-  } = useCompareContext();
+  const { showCompare, itemsToCompare, closeCompare } = useCompareContext();
 
   console.log(itemsToCompare);
 

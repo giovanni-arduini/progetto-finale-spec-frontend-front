@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { useGlobalContext } from "../Contexts/GlobalContext";
+import { useFavoritesContext } from "../Contexts/FavoritesContext";
 import { useCompareContext } from "../Contexts/CompareContext";
 import FavoritesTab from "./FavoritesTab";
 
 export default function Header() {
-  const { favorites, setShowFavorites } = useGlobalContext();
+  const { favorites, setShowFavorites } = useFavoritesContext();
 
   const { toggleCompare } = useCompareContext();
 
@@ -27,7 +27,7 @@ export default function Header() {
           className="w-10 h-10 bg-gray-200 rounded-full flex justify-center items-center relative"
           onClick={() => handleShowFavorites()}
         >
-          <img className="w-6" src="../public/images/save.png" alt="" />
+          <img className="w-6" src="/images/save.png" alt="Favorites list" />
           <span className="absolute top-3/5 left-3/5 bg-black text-white text-sm w-3 h-3 rounded-full flex justify-center items-center">
             {favorites.length}
           </span>

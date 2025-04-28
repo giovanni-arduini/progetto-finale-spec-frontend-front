@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../Contexts/GlobalContext";
+import { useFavoritesContext } from "../Contexts/FavoritesContext";
 import { useCompareContext } from "../Contexts/CompareContext";
 
 function ProductCard({ product }) {
   const { id, title, category } = product;
-  const { favorites, setFavorites, products } = useGlobalContext();
+
+  const { products } = useGlobalContext();
+  const { favorites, setFavorites } = useFavoritesContext();
   const { compareItem } = useCompareContext();
 
   const navigate = useNavigate();

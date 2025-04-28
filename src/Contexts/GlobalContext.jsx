@@ -19,10 +19,6 @@ export function GlobalProvider({ children }) {
         products,
         setProducts,
         getProduct,
-        favorites,
-        setFavorites,
-        showFavorites,
-        setShowFavorites,
       }}
     >
       {children}

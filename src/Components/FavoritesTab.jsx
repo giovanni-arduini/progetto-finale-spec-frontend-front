@@ -1,9 +1,9 @@
-import { useGlobalContext } from "../Contexts/GlobalContext";
+import { useFavoritesContext } from "../Contexts/FavoritesContext";
 import SideTab from "./SideTab";
 
 function FavoritesTab() {
   const { favorites, setFavorites, showFavorites, setShowFavorites } =
-    useGlobalContext();
+    useFavoritesContext();
 
   const removeFromFavorites = (item) => {
     setFavorites((curr) => curr.filter((p) => p.id !== item.id));

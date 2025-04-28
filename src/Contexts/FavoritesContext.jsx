@@ -24,7 +24,7 @@ export function FavoritesProvider({ children }) {
     setFavorites((curr) => curr.filter((p) => p.id !== item.id));
   };
 
-  // used in ProductCard to add and remove favorite
+  // used in ProductCard and ProductDetail to add and remove favorite
   const handleFavorite = (id) => {
     const newFavorite = products.find((p) => p.id === id);
     if (newFavorite && !favorites.some((fav) => fav.id === id)) {

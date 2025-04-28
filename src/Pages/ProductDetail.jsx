@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../Contexts/GlobalContext";
+import { useFavoritesContext } from "../Contexts/FavoritesContext";
 
 export default function ProductsDetail() {
   const { getProduct } = useGlobalContext();
+  const { handleFavorite } = useFavoritesContext();
   const { id } = useParams();
   const [guitar, setGuitar] = useState();
 
@@ -64,14 +66,32 @@ export default function ProductsDetail() {
         <div className="flex justify-center p-4 col-span-3">
           <img className="max-h-100  object-contain" src={image} alt="" />
         </div>
-        <div className="flex flex-col grow items-center justify-center col-span-2">
-          <p className="font-bold text-lg">Price: {price}€</p>
-          <h4>{category} Guitar</h4>
+        <div className="flex flex-col grid grid-row-5 grow items-center justify-center col-span-2">
+          <div className="row-span-3">
+            <p>Price (VAT incuded):</p>
+            <p className="font-bold ">
+              <span className="text-5xl">{price}</span>
+              <span className="text-md">,00</span> €
+            </p>
+          </div>
           {
-            <p className={available ? "text-green-600" : "text-red-600"}>
+            <p
+              className={`row-span-1 font-bold text-xl ${
+                available ? "text-green-600 " : "text-red-600"
+              }`}
+            >
               {available ? "Available" : "Currently out of stock"}
             </p>
           }
+          <div className="row-span-1">
+            <button
+              className="cursor-pointer"
+              onClick={() => handleFavorite(guitar.id)}
+            >
+              Add to fav
+            </button>
+            <h4>{category} Guitar</h4>
+          </div>
         </div>
       </div>
       <div className="max-w-200 mt-4 m-auto">

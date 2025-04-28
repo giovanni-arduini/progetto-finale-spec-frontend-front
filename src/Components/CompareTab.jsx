@@ -12,9 +12,15 @@ export default function CompareTab() {
         title={"Compare products"}
         content={
           <>
-            {itemsToCompare.map((item) => (
-              <CompareCard key={item.id} item={item} />
-            ))}
+            {itemsToCompare.length < 1 ? (
+              <h2 className="text-white">No selected items to compare</h2>
+            ) : (
+              <>
+                {itemsToCompare.map((item) => (
+                  <CompareCard key={item.id} item={item} />
+                ))}
+              </>
+            )}
           </>
         }
         show={showCompare}

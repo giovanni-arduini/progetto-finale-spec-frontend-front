@@ -19,7 +19,7 @@ export default function ProductsDetail() {
       }
     }
     getGuitar();
-  }, []);
+  }, [id]);
 
   if (!guitar) {
     return <p>Loading...</p>;

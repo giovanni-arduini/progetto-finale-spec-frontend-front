@@ -20,7 +20,7 @@ export function CompareProvider({ children }) {
 
   const compareItem = async (id) => {
     if (!itemsToCompare.some((item) => item.id === id))
-      if (itemsToCompare.length < 2) {
+      if (itemsToCompare.length < 3) {
         const item = await getItem(id);
         setItemsToCompare((prevItems) => [...prevItems, item]);
       } else {

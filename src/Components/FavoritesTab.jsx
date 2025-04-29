@@ -1,9 +1,17 @@
+import { useEffect } from "react";
 import { useFavoritesContext } from "../Contexts/FavoritesContext";
 import SideTab from "./SideTab";
+import { useNavigate } from "react-router-dom";
 
 function FavoritesTab() {
   const { favorites, showFavorites, setShowFavorites, removeFromFavorites } =
     useFavoritesContext();
+
+  const navigate = useNavigate();
+
+  function toDetail(id) {
+    navigate(`/guitars/${id}`);
+  }
 
   return (
     <SideTab
@@ -12,8 +20,9 @@ function FavoritesTab() {
         favorites.length > 0 ? (
           favorites.map((item, i) => (
             <div
-              className="bg-slate-500 p-3 flex flex-col gap-2 overflow-auto"
+              className="bg-slate-500 p-3 flex flex-col gap-2 overflow-auto cursor-pointer"
               key={i}
+              onClick={() => toDetail(item.id)}
             >
               <div className="text-center">{item.title}</div>
               <button

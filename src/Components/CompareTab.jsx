@@ -16,9 +16,23 @@ export default function CompareTab() {
               <h2 className="text-white">No selected items to compare</h2>
             ) : (
               <>
-                {itemsToCompare.map((item) => (
-                  <CompareCard key={item.id} item={item} />
-                ))}
+                <div
+                  className="grid gap-4"
+                  style={{
+                    gridTemplateColumns: `repeat(${
+                      itemsToCompare.length === 1 ? 2 : itemsToCompare.length
+                    }, 1fr)`,
+                  }}
+                >
+                  {itemsToCompare.map((item) => (
+                    <CompareCard key={item.id} item={item} />
+                  ))}
+                  {itemsToCompare.length < 2 && (
+                    <div className="text-white text-xl text-center">
+                      Select another item to compare
+                    </div>
+                  )}
+                </div>
               </>
             )}
           </>

@@ -24,15 +24,15 @@ export default function SideTab({ title, content, onClose, show, position }) {
       <div>
         <h2 className="p-5 text-white text-2xl">{title}</h2>
         <div className="p-5">
-          <ul
+          <div
             className={`${
               position !== "bottom"
                 ? "flex flex-col gap-10 justify-between  text-white p-2 border-b-2 border-slate-700 round"
-                : "flex justify-center items-center grid grid-cols-2 gap-5"
+                : "grid auto-cols-auto p-5"
             }`}
           >
             {content}
-          </ul>
+          </div>
         </div>
       </div>
     </div>

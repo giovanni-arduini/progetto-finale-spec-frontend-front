@@ -1,17 +1,31 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback, useRef } from "react";
 import { useGlobalContext } from "../Contexts/GlobalContext";
 import { useCompareContext } from "../Contexts/CompareContext";
 import ProductCard from "../Components/ProductCard";
+
+const debounce = (callback, delay) => {
+  let timer;
+  return (value) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      callback(value);
+    }, delay);
+  };
+};
 
 function ProductsList() {
   const { products } = useGlobalContext();
   const { showCompare } = useCompareContext();
 
-  console.log(showCompare);
-
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortOrder, setSortOrder] = useState(1);
+  const searchRef = useRef();
+
+  const handleSearch = useCallback(
+    debounce((value) => setSearch(value), 400),
+    []
+  );
 
   const filteredList = useMemo(() => {
     return [...products]
@@ -41,8 +55,8 @@ function ProductsList() {
           <input
             className="bg-white rounded-lg mr-3 p-1 px-2"
             type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            ref={searchRef}
+            onChange={(e) => handleSearch(e.target.value)}
           />
 
           <select

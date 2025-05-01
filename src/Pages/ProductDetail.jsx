@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../Contexts/GlobalContext";
 import { useFavoritesContext } from "../Contexts/FavoritesContext";
+import { useCompareContext } from "../Contexts/CompareContext";
 
 export default function ProductsDetail() {
   const { getProduct } = useGlobalContext();
   const { handleFavorite, favorites } = useFavoritesContext();
+  const { compareItem, itemsToCompare } = useCompareContext();
   const { id } = useParams();
   const [guitar, setGuitar] = useState();
 
@@ -51,6 +53,8 @@ export default function ProductsDetail() {
 
   const stars = Array.from("12345");
 
+  console.log(itemsToCompare);
+
   return (
     <>
       <h1 className="text-3xl font-bold ">{title}</h1>
@@ -94,6 +98,21 @@ export default function ProductsDetail() {
                   : "Add to "
               }`}
               <span className="text-red-600">♥︎</span>
+            </button>
+            <button
+              onClick={() => compareItem(guitar.id)}
+              className={`
+                bg-gray-100 border border-gray-300 rounded-md cursor-pointer
+                ${
+                  itemsToCompare.some((item) => item.id === guitar.id)
+                    ? "bg-gray-300"
+                    : "bg-gray-100"
+                }
+              `}
+            >
+              {itemsToCompare.some((item) => item.id === guitar.id)
+                ? "Remove from compare"
+                : "Compare product"}
             </button>
             <h4>{category} Guitar</h4>
           </div>

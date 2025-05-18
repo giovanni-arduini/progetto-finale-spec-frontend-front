@@ -5,17 +5,26 @@ import FavoritesTab from "./FavoritesTab";
 
 export default function Header() {
   const { favorites, toggleFavorites } = useFavoritesContext();
+  const { toggleCompare, showCompare } = useCompareContext();
 
-  const { toggleCompare } = useCompareContext();
+  const handleCompareClick = () => {
+    toggleCompare();
+  };
 
   return (
-    <header className="flex justify-between items-center px-3">
+    <header className="flex justify-between items-center px-3 bg-teal-600 p-3">
       <FavoritesTab />
       <div>
-        <NavLink to={"/"} className={"text-l font-semibold mr-5"}>
+        <NavLink to={"/"} className={`nav text-l font-semibold mr-5`}>
           Home
         </NavLink>
-        <button onClick={() => toggleCompare()}>Compare products</button>
+        <button
+          id="compareBtn"
+          onClick={handleCompareClick}
+          className={`nav ${showCompare ? "active" : ""}`}
+        >
+          Compare products
+        </button>
       </div>
 
       <div>

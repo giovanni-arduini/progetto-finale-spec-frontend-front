@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useFavoritesContext } from "../Contexts/FavoritesContext";
 import SideTab from "./SideTab";
 import { useNavigate } from "react-router-dom";

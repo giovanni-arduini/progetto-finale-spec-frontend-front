@@ -14,8 +14,6 @@ function ProductCard({ product }) {
     navigate(`/guitars/${id}`);
   };
 
-  console.log(itemsToCompare);
-
   return (
     <div className="bg-white rounded-xl p-5 box-shadow-sm flex flex-col">
       <div className="cursor-pointer mb-2 grow" onClick={() => toDetail(id)}>

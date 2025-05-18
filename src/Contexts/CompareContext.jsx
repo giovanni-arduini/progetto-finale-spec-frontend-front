@@ -32,10 +32,12 @@ export function CompareProvider({ children }) {
     }
   };
 
+  // Used in Header, CompareTab
   function closeCompare() {
     setShowCompare(false);
   }
 
+  // Used in Header
   function toggleCompare() {
     showCompare ? setShowCompare(false) : setShowCompare(true);
   }

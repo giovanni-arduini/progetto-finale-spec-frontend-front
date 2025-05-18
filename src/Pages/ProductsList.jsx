@@ -45,13 +45,13 @@ function ProductsList() {
   return (
     <>
       <section
-        className={`h-full transition-all duration-300 ${
+        className={`h-full transition-all duration-300 flex flex-col items-center ${
           showCompare ? "pb-100" : "pb-10"
         }`}
       >
         {" "}
-        <h1 className="text-3xl my-5">Guitars</h1>
-        <div className="mb-3">
+        <h1 className="text-3xl font-bold my-5">Guitars</h1>
+        <div className="mb-3 flex flex-wrap gap-2">
           <input
             className="bg-white rounded-lg mr-3 p-1 px-2"
             type="text"
@@ -79,6 +79,9 @@ function ProductsList() {
           }}
         >
           Sort by name
+          <span className="text-xs text-gray-600">
+            {sortOrder > 0 ? "  (A to Z)" : "  (Z to A)"}
+          </span>
         </button>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
           {filteredList.map((product) => (

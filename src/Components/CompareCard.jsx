@@ -30,18 +30,35 @@ export default function CompareCard({ item }) {
   }
 
   const availability = useAvailability(available);
+  const stars = Array.from("12345");
 
   return (
     <>
       <div className="bg-slate-400 p-10">
         <div className="flex flex-col">
-          <h3 className="text-3xl font-bold">{title}</h3>
-          <div className="flex justify-between bg-white">
-            <img className="h-48 w-96 object-contain" src={image} alt="" />
-            <p>{rating}</p>
-            <div className="flex flex-col items-end">
-              <h4>Category: {category}</h4>
-              <p>{available}</p>
+          <h3 className="text-3xl font-bold text-center line-clamp-1 mb-3">
+            {title}
+          </h3>
+          <div className="flex flex-col justify-around bg-white xl:flex-row">
+            <img
+              className="h-48 w-96 object-contain mt-3 mb-3"
+              src={image}
+              alt=""
+            />
+            <div className="flex flex-col justify-around xl:items-end p-4 items-center">
+              <p className="text-orange-300">
+                {stars.map((e) => {
+                  if (e <= Math.round(rating)) {
+                    return "★";
+                  }
+                  return "☆";
+                })}
+              </p>
+              <p>
+                Category:
+                {category}
+              </p>
+              <p className="">{available}</p>
               <p>Price: {price}€</p>
               {<p className={availability.style}>{availability.message}</p>}
             </div>

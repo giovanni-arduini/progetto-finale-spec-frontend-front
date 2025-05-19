@@ -1,6 +1,7 @@
-import { useState, useMemo, useCallback, useRef } from "react";
+import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { useGlobalContext } from "../Contexts/GlobalContext";
 import { useCompareContext } from "../Contexts/CompareContext";
+
 import ProductCard from "../Components/ProductCard";
 
 const debounce = (callback, delay) => {
@@ -17,15 +18,19 @@ function ProductsList() {
   const { products } = useGlobalContext();
   const { showCompare } = useCompareContext();
 
+  const searchRef = useRef();
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortOrder, setSortOrder] = useState(1);
-  const searchRef = useRef();
 
   const handleSearch = useCallback(
     debounce((value) => setSearch(value), 400),
     []
   );
+
+  useEffect(() => {
+    searchRef.current.focus();
+  }, []);
 
   const filteredList = useMemo(() => {
     return [...products]
@@ -50,17 +55,18 @@ function ProductsList() {
         }`}
       >
         {" "}
-        <h1 className="text-3xl font-bold my-5">Guitars</h1>
-        <div className="mb-3 flex flex-wrap gap-2">
+        <h1 className="text-3xl font-bold my-5 products-header">Guitars</h1>
+        <div className="mb-3 flex flex-wrap gap-2 justify-center">
           <input
             className="bg-white rounded-lg mr-3 p-1 px-2"
             type="text"
+            placeholder="Search by name"
             ref={searchRef}
             onChange={(e) => handleSearch(e.target.value)}
           />
 
           <select
-            className="bg-white rounded-lg mr-3 p-1"
+            className="bg-white rounded-lg mr-3 p-1 cursor-pointer"
             name="category"
             id="category"
             onChange={(e) => setSelectedCategory(e.target.value)}
@@ -73,7 +79,7 @@ function ProductsList() {
           </select>
         </div>
         <button
-          className="bg-white rounded-lg p-1 mb-4 px-2"
+          className="bg-white rounded-lg p-1 mb-4 px-2 cursor-pointer"
           onClick={() => {
             setSortOrder(sortOrder * -1);
           }}

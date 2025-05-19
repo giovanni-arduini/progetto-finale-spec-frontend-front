@@ -39,7 +39,10 @@ function FavoritesTab() {
             </div>
           ))
         ) : (
-          <p>No added favorites</p>
+          <>
+            <p className="text-center">No added favorites</p>
+            <p className="italic">Add your favorite guitars!</p>
+          </>
         )
       }
       onClose={() => setShowFavorites(false)}

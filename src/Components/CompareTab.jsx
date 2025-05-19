@@ -13,7 +13,12 @@ export default function CompareTab() {
         content={
           <>
             {itemsToCompare.length < 1 ? (
-              <h2 className="text-white">No selected items to compare</h2>
+              <div className=" items-center flex flex-col gap-5">
+                <p className="text-xl italic text-white">
+                  Compare up to 3 guitars!
+                </p>
+                <h2 className="text-white">No selected items to compare</h2>
+              </div>
             ) : (
               <>
                 <div

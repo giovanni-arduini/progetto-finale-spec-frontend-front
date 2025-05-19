@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect } from "react";
 import { useGlobalContext } from "./GlobalContext";
 import useCompare from "../Hooks/useCompare";
+import { useFavoritesContext } from "./FavoritesContext";
 
 const CompareContext = createContext();
 
@@ -10,6 +11,7 @@ export function useCompareContext() {
 
 export function CompareProvider({ children }) {
   const { getProduct } = useGlobalContext();
+  const { setShowFavorites } = useFavoritesContext();
   const { showCompare, setShowCompare, itemsToCompare, setItemsToCompare } =
     useCompare();
 
@@ -43,6 +45,10 @@ export function CompareProvider({ children }) {
   }
 
   useEffect(() => {
+    showCompare && setShowFavorites(false);
+  }, [showCompare]);
+
+  useEffect(() => {
     itemsToCompare.length < 1 ? setShowCompare(false) : setShowCompare(true);
   }, [itemsToCompare]);
 
@@ -54,6 +60,7 @@ export function CompareProvider({ children }) {
         compareItem,
         closeCompare,
         toggleCompare,
+        setShowCompare,
       }}
     >
       {children}

@@ -68,7 +68,9 @@ export default function ProductsDetail() {
       </p>
       <div className="flex grid grid-cols-5 bg-white rounded-lg">
         <div className="flex justify-center p-4 col-span-3">
-          <img className="max-h-100  object-contain" src={image} alt="" />
+          <div className="w-72 h-100 flex items-center justify-center bg-white rounded-lg overflow-hidden">
+            <img className="w-full h-full object-contain" src={image} alt="" />
+          </div>
         </div>
         <div className="flex flex-col grid grid-row-5 grow items-center justify-center col-span-2">
           <div className="row-span-3">
@@ -77,6 +79,7 @@ export default function ProductsDetail() {
               <span className="text-5xl">{price}</span>
               <span className="text-md">,00</span> €
             </p>
+            <h4>{category} Guitar</h4>
           </div>
           {
             <p
@@ -114,7 +117,6 @@ export default function ProductsDetail() {
                 ? "Remove from compare"
                 : "Compare product"}
             </button>
-            <h4>{category} Guitar</h4>
           </div>
         </div>
       </div>

@@ -15,9 +15,9 @@ function ProductCard({ product }) {
   };
 
   return (
-    <div className="bg-white rounded-xl p-5 box-shadow-sm flex flex-col">
+    <div className="bg-white rounded-xl p-5 box-shadow-sm flex flex-col hover:scale-105 transition duration-250 ease-in-out shadow-md">
       <div className="cursor-pointer mb-2 grow" onClick={() => toDetail(id)}>
-        <h2 className="text-lg py-3 text-center font-md">{title}</h2>
+        <h2 className="text-lg py-3  font-md">{title}</h2>
         <p>{category}</p>
       </div>
       <div className="flex justify-around ">

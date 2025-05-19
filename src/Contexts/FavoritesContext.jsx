@@ -28,8 +28,20 @@ export function FavoritesProvider({ children }) {
   const handleFavorite = (id) => {
     const newFavorite = products.find((p) => p.id === id);
     if (newFavorite && !favorites.some((fav) => fav.id === id)) {
+      // Animation effets on favorites icon
+      const favIcon = document.getElementById("favIcon");
+      favIcon.classList.add("add-animation");
+      setTimeout(function () {
+        favIcon.classList.remove("add-animation");
+      }, 1000);
+
       setFavorites((prevFavorites) => [...prevFavorites, newFavorite]);
     } else {
+      const favCounter = document.getElementById("favCounter");
+      favCounter.classList.add("delete-animation");
+      setTimeout(function () {
+        favCounter.classList.remove("delete-animation");
+      }, 1000);
       setFavorites((prevFavorites) => prevFavorites.filter((p) => p.id !== id));
     }
   };

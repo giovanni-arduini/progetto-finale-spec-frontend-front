@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 
 function useGuitars() {
   const [products, setProducts] = useState([]);
+  const URL = import.meta.env.VITE_API_URL;
 
   const fetchProducts = async () => {
-    const response = await fetch("http://localhost:3001/guitars");
+    const response = await fetch(URL);
     const data = await response.json();
     setProducts(data);
   };
@@ -12,7 +13,7 @@ function useGuitars() {
   useEffect(() => fetchProducts, []);
 
   const getProduct = async (id) => {
-    const response = await fetch(`http://localhost:3001/guitars/${id}`);
+    const response = await fetch(URL + id);
     const data = await response.json();
     return data;
   };

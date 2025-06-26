@@ -1,9 +1,16 @@
 import CompareCard from "./CompareCard";
 import SideTab from "./SideTab";
 import { useCompareContext } from "../Contexts/CompareContext";
+import { useRef } from "react";
 
 export default function CompareTab() {
   const { showCompare, itemsToCompare, closeCompare } = useCompareContext();
+
+  const topRef = useRef();
+
+  function toTop() {
+    topRef.current.scrollIntoView({ behavior: "smooth" });
+  }
 
   return (
     <>
@@ -22,6 +29,7 @@ export default function CompareTab() {
             ) : (
               <>
                 <div
+                  ref={topRef}
                   className="grid gap-4"
                   style={{
                     gridTemplateColumns: `repeat(${
@@ -38,6 +46,12 @@ export default function CompareTab() {
                     </div>
                   )}
                 </div>
+                <button
+                  className="mt-5 bg-slate-300 m-auto px-2 rounded-sm hover:bg-slate-400 cursor-pointer"
+                  onClick={() => toTop()}
+                >
+                  To the top
+                </button>
               </>
             )}
           </>

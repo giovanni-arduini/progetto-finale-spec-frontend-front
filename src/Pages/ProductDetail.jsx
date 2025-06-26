@@ -66,13 +66,13 @@ export default function ProductsDetail() {
           return "☆";
         })}
       </p>
-      <div className="flex grid grid-cols-5 bg-white rounded-lg">
-        <div className="flex justify-center p-4 col-span-3">
+      <div className="flex flex-col sm:grid sm:grid-cols-5 bg-white rounded-lg">
+        <div className="flex justify-center p-4 col-span-3 mb-4 sm:mb-0">
           <div className="w-72 h-100 flex items-center justify-center bg-white rounded-lg overflow-hidden">
             <img className="w-full h-full object-contain" src={image} alt="" />
           </div>
         </div>
-        <div className="flex flex-col grid grid-row-5 grow items-center justify-center col-span-2">
+        <div className="grid grid-row-5 grow items-center justify-center sm:justify-start mb-4 sm:mb-0 col-span-2 mx-2">
           <div className="row-span-3">
             <p>Price (VAT incuded):</p>
             <p className="font-bold ">

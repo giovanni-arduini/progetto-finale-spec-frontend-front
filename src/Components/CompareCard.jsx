@@ -1,11 +1,14 @@
 import { useAvailability } from "../Hooks/useAvailability";
+import { useCompareContext } from "../Contexts/CompareContext";
 
 export default function CompareCard({ item }) {
   if (!item) {
     return <p>Loading...</p>;
   }
 
-  const { title, price, image, category, available, rating } = item;
+  const { compareItem } = useCompareContext();
+
+  const { title, price, image, category, available, rating, id } = item;
 
   const itemSpecs = Object.entries(item).filter(
     ([key]) =>
@@ -36,6 +39,12 @@ export default function CompareCard({ item }) {
     <>
       <div className="bg-slate-400 p-10">
         <div className="flex flex-col">
+          <button
+            className="cursor-pointer mb-3 bg-slate-300 border-2 rounded-md m-auto px-2 hover:bg-slate-500 hover:text-white"
+            onClick={() => compareItem(id)}
+          >
+            Remove from compare
+          </button>
           <h3 className="text-3xl font-bold text-center line-clamp-1 mb-3">
             {title}
           </h3>

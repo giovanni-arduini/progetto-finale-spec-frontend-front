@@ -15,7 +15,7 @@ const debounce = (callback, delay) => {
 };
 
 function ProductsList() {
-  const { products } = useGlobalContext();
+  const { products, categories } = useGlobalContext();
   const { showCompare } = useCompareContext();
 
   const searchRef = useRef();
@@ -72,10 +72,13 @@ function ProductsList() {
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
             <option value="">All categories</option>
-            <option value="Acoustic">Acoustic</option>
-            <option value="Electric">Electric</option>
-            <option value="Acoustic-Electric">Acoustic-Electric</option>
-            <option value="Semi-Hollow Electric">Semi-Hollow Electric</option>
+            {categories.map((c, i) => {
+              return (
+                <option key={i} value={c}>
+                  {c}
+                </option>
+              );
+            })}
           </select>
         </div>
         <button
